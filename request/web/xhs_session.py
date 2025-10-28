@@ -129,7 +129,7 @@ class XHS_Session:
 
         res_json = await res.json()
 
-        self.cookies.update({
+        self._session.cookie_jar.update_cookies({
             "websectiga": self.__xhs_encrypt.gen_websectiga(res_json.get('data').get('data')),
             "sec_poison_id": res_json.get('data').get('secPoisonId'),
         })
