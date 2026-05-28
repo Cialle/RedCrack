@@ -181,8 +181,8 @@ class XhsFpGenerator:
             "x39": 0, #小红书抽风这里写死成0了 f"{random.randint(1, 5)}", # localStorage.getItem('sc');  刷新一次页面 +1    1-5 随机即可 # 2025-9-7 18:17:39 注: 之前是p1 现在变成 sc
             "x40": "0", # localStorage.getItem('ptt');  但正常使用并无该值 固定0
             "x41": "0", # localStorage.getItem('pst');  但正常使用并无该值 固定0
-            "x42": "3.4.3", # 所使用的Finggerprint.js版本 固定值
-            "x43": "742cc32c", # 通过一张图片的hash值来检测浏览器是否被篡改 固定值
+            "x42": "3.5.4", # 所使用的Finggerprint.js版本 固定值
+            "x43": "Canvas not supported", # canvas指纹相关  测试Mac OS Chrome传值是这样的
             "x44": f"{int(time.time() * 1000)}", # 当前时间戳(毫秒)
             "x45": "__SEC_CAV__1-1-1-1-1|__SEC_WSA__|", # 前端风控 SDK 的打点信息 如果有风控会是__SEC_WSA__|之类的  固定值
             "x46": "false", # navigator.__proto__.hasOwnProperty('webdriver'); 和 Object.getOwnPropertyDescriptor(Navigator.prototype, 'webdriver'); // true → 风控触发
@@ -198,7 +198,7 @@ class XhsFpGenerator:
             "x58": "180", # document.getElementsByTagName('div') // div标签数量 固定值
             "x59": "2", # performance.getEntriesByType("resource").length   // 资源加载数量 固定值
             "x60": "63", # 风控分 固定值
-            "x61": "1291", # Object.getOwnPropertyNames(window) .length  // window对象属性数量 固定值
+            "x61": "1348", # Object.getOwnPropertyNames(window) .length  // window对象属性数量 固定值
             "x62": "2047", # HOOK检测 1,1,1,1,1,1,1,1,1,1,1  11个1(通过) 组成二进制2047 固定值
             "x63": "0", # JS VMP文件换行检测 固定值
             "x64": "0", # HOOK ToString检测 CPU核心数量检测 固定值
@@ -236,11 +236,9 @@ class XhsFpGenerator:
             "x31": "124.04347527516074", # 固定值
             "x79": "144|599565058866", # navigator.webkitTemporaryStorage.queryUsageAndQuota(used, granted)  // 随机数|599565058866 固定值
             "x53": hashlib.md5(secrets.token_bytes(32)).hexdigest(), #"235c6559af50acefe4755120d05570a0"  if "edg/" in user_agent else "993da9a681fd3994c9f53de11f2903b3", # speechSynthesis.getVoices()  Fingerprint2.x64hash128 edge是235c6559af50acefe4755120d05570a0 chrome是993da9a681fd3994c9f53de11f2903b3
-            "x54": "10311144241322244122", # 固定值 
+            "x54": "11311144241322244122", # 固定值 
             "x80": "1|[object FileSystemDirectoryHandle]", # 固定值
         }
-
-        fp = {'x1': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'x2': 'false', 'x3': 'zh-CN', 'x4': '24', 'x5': '8', 'x6': '24', 'x7': 'Google Inc. (NVIDIA),ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 (0x00002882) Direct3D11 vs_5_0 ps_5_0, D3D11)', 'x8': '12', 'x9': '2560;1440', 'x10': '2560;1392', 'x11': '-480', 'x12': 'Asia/Shanghai', 'x13': 'true', 'x14': 'true', 'x15': 'true', 'x16': 'false', 'x17': 'false', 'x18': 'un', 'x19': 'Win32', 'x20': '', 'x21': 'PDF Viewer,Chrome PDF Viewer,Chromium PDF Viewer,Microsoft Edge PDF Viewer,WebKit built-in PDF', 'x22': 'c8e2f6ff2a07957f70a18cde6b905ebb', 'x23': 'false', 'x24': 'false', 'x25': 'false', 'x26': 'false', 'x27': 'false', 'x28': '0,false,false', 'x29': '4,7,8', 'x30': 'swf object not loaded', 'x33': '0', 'x34': '0', 'x35': '0', 'x36': '10', 'x37': '0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|0|0', 'x38': '0|0|1|0|1|0|0|0|0|0|1|0|1|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0', 'x39': '6', 'x40': '0', 'x41': '0', 'x42': '3.4.3', 'x43': '742cc32c', 'x44': '1758515175443', 'x45': '__SEC_CAV__1-1-1-1-1|__SEC_WSA__|', 'x46': 'false', 'x47': '1|0|0|0|0|0', 'x48': '', 'x49': '{list:[],type:}', 'x50': '', 'x51': '', 'x52': '', 'x55': '340,340,340,380,360,420,360,360,340,360,340,340,360,440', 'x56': 'Google Inc. (NVIDIA)|ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 (0x00002882) Direct3D11 vs_5_0 ps_5_0, D3D11)|0ebc53d03ea89d69525d81de558e2544|35', 'x57': 'abRequestId=9de2891c-0a67-51dd-b749-b85bb6435b9c; webBuild=4.81.0; xsecappid=xhs-pc-web; a1=1996fac1652qhpep2lhhtq8ay9yy5iep6gd22ffi050000299679; webId=e1b691a826bb747ade49823114291378; loadts=1758515174315', 'x58': '59', 'x59': '2', 'x60': '63', 'x61': '1290', 'x62': '2047', 'x63': '0', 'x64': '0', 'x65': '0', 'x66': {'referer': 'https://www.xiaohongshu.com/explore/68bff99c000000001d02e2cd?xsec_token=ABo18yU0Y74__BpvENJX-t9Jv3vtnvfG7RfVlE8s7JjCk=&xsec_sour', 'location': 'https://www.xiaohongshu.com/login?redirectPath=https%253A%252F%252Fwww.xiaohongshu.com%252Fexplore%252F68bff99c000000001d02e2cd%', 'frame': 0}, 'x67': '1|0', 'x68': '0', 'x69': '325|1291|30', 'x70': ['location'], 'x71': 'true', 'x72': 'complete', 'x73': '726', 'x74': '0|0|0', 'x75': 'Google Inc.', 'x76': 'true', 'x77': '1|1|1|1|1|1|1|1|1|1', 'x78': {'x': 0, 'y': -1, 'left': 0, 'right': 290.828125, 'bottom': 17, 'height': 18, 'top': -1, 'width': 290.828125, 'font': 'system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "PingFang TC", "PingFang HK", "Microsoft Yahei", "Microsoft JhengHei"'}, 'x82': '__SSR__|_0x5763|_0x133c', 'x31': '124.04347527516074', 'x79': '144|599565058866', 'x53': '993da9a681fd3994c9f53de11f2903b3', 'x54': '10311144241322244122', 'x80': '1|[object FileSystemDirectoryHandle]'}
         return fp
     
     @staticmethod
