@@ -212,13 +212,8 @@ await xhs_session.close_session()
 
   - 加密配置有能力自行修改
 
-
-
-### 6. 请我喝个咖啡吧
-
-![](https://github.com/Cialle/RedCrack/blob/master/imgs/alipay.jpg?raw=true)
-![](https://github.com/Cialle/RedCrack/blob/master/imgs/wechat.jpg?raw=true)
-
+### 6. 指纹
+- CBC ECB Decrypt -> Base64 Decode 自行解码后更新，这里不过多赘述，后续不会继续更新Fp内容，请自行深入研究。
 
 ## Star History
 
