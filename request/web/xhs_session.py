@@ -180,7 +180,10 @@ class XHS_Session:
         self.__xhs_encrypt.update_fingerprint(self.__fp, cookies_dict, url)
         xsc = self.__xhs_encrypt.encrypt_headers_xsc(a1, self.__fp)
         self._session.headers['x-s-common'] = str(xsc)
-        
+
+        if xrap := self.__xhs_encrypt.encrypt_headers_xrap_param(url, data):
+            self._session.headers['x-rap-param'] = str(xrap)
+
         xt = int(time.time() * 1000)
         self._session.headers['x-t'] = str(xt)
 
@@ -392,7 +395,7 @@ class XHS_Session:
                 # 关闭连接器并清理待处理连接
                 connector = self._session._connector
                 if connector:
-                    connector.close()  # 强制关闭
+                    await connector.close()  # 强制关闭
                     connector._cleanup() if hasattr(connector, '_cleanup') else None
 
             await self._session.close()
